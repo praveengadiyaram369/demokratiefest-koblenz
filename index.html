@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fest der Demokratie – Koblenz 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E8402A;
+    --orange: #F07A28;
+    --yellow: #F5C518;
+    --green: #4CAF50;
+    --blue: #2B7BCC;
+    --purple: #8B4FB8;
+    --pink: #D94FA0;
+    --dark: #1a1a2e;
+    --light: #fafaf8;
+    --text: #1a1a2e;
+    --muted: #5a5a72;
+    --border: rgba(0,0,0,0.08);
+    --rainbow: linear-gradient(90deg, #E8402A, #F07A28, #F5C518, #4CAF50, #2B7BCC, #8B4FB8, #D94FA0);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--text); line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,248,0.95); backdrop-filter: blur(12px);
+    border-bottom: 3px solid transparent;
+    border-image: var(--rainbow) 1;
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-badge {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--rainbow); display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-weight: 900; font-size: 14px; color: white;
+  }
+  .nav-logo span { font-weight: 600; font-size: 15px; color: var(--text); }
+  .nav-links { display: flex; gap: 0.2rem; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px; transition: all 0.2s;
+  }
+  .nav-links a:hover { background: rgba(0,0,0,0.06); color: var(--text); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+  @media (max-width: 700px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(250,250,248,0.98); padding: 1rem; border-bottom: 1px solid var(--border); }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: linear-gradient(135deg,
+      rgba(232,64,42,0.08) 0%, rgba(240,122,40,0.08) 20%,
+      rgba(245,197,24,0.08) 35%, rgba(76,175,80,0.08) 50%,
+      rgba(43,123,204,0.1) 65%, rgba(139,79,184,0.1) 80%,
+      rgba(217,79,160,0.08) 100%);
+  }
+  .hero-bg::before {
+    content: ''; position: absolute; top: -40%; left: -20%; width: 70%; height: 80%;
+    background: radial-gradient(circle, rgba(245,197,24,0.15) 0%, transparent 60%);
+    animation: float1 8s ease-in-out infinite;
+  }
+  .hero-bg::after {
+    content: ''; position: absolute; bottom: -20%; right: -10%; width: 60%; height: 70%;
+    background: radial-gradient(circle, rgba(43,123,204,0.12) 0%, transparent 60%);
+    animation: float2 10s ease-in-out infinite;
+  }
+  @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-20px)} }
+  @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,30px)} }
+  .hero-content { position: relative; z-index: 1; max-width: 760px; }
+  .hero-tag {
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: white;
+    background: var(--rainbow); padding: 6px 20px; border-radius: 20px;
+    margin-bottom: 1.5rem; animation: fadeDown 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: clamp(3rem, 8vw, 6rem); line-height: 1.05;
+    color: var(--text); margin-bottom: 0.5rem;
+    animation: fadeDown 0.8s 0.1s ease both;
+  }
+  .hero-title .rainbow-text {
+    background: var(--rainbow); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    font-size: 1.3rem; font-weight: 300; color: var(--muted); margin-bottom: 2rem;
+    animation: fadeDown 0.8s 0.2s ease both;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+    margin-bottom: 2.5rem; animation: fadeDown 0.8s 0.3s ease both;
+  }
+  .hero-chip {
+    display: flex; align-items: center; gap: 8px;
+    background: white; border: 1px solid var(--border);
+    border-radius: 12px; padding: 10px 18px;
+    font-size: 15px; font-weight: 500; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .hero-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; animation: fadeDown 0.8s 0.4s ease both; }
+  .btn-primary {
+    text-decoration: none; display: inline-block;
+    background: var(--rainbow); color: white; font-weight: 600; font-size: 15px;
+    padding: 14px 32px; border-radius: 50px; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(43,123,204,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(43,123,204,0.35); }
+  .btn-outline {
+    text-decoration: none; display: inline-block;
+    background: white; color: var(--text); font-weight: 600; font-size: 15px;
+    padding: 14px 32px; border-radius: 50px; border: 1.5px solid var(--border);
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:translateY(0)} }
+
+  /* RAINBOW DIVIDER */
+  .rainbow-bar { height: 4px; background: var(--rainbow); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    background: var(--rainbow); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif; font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--text); margin-bottom: 1rem;
+  }
+  .section-intro { font-size: 1.05rem; color: var(--muted); max-width: 600px; line-height: 1.8; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .about-image-wrap {
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    aspect-ratio: 4/3; background: linear-gradient(135deg, #E8402A22, #2B7BCC22);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-image-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-stat-row { display: flex; gap: 2rem; margin-top: 2rem; }
+  .about-stat { text-align: center; }
+  .about-stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; background: var(--rainbow); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .about-stat-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+  /* HIGHLIGHTS */
+  .highlights-bg { background: var(--dark); }
+  .highlights-bg .section-title { color: white; }
+  .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .highlight-card {
+    border-radius: 16px; padding: 2rem 1.5rem; text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .highlight-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.25); }
+  .highlight-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .highlight-title { font-weight: 600; font-size: 15px; color: white; margin-bottom: 0.4rem; }
+  .highlight-desc { font-size: 13px; color: rgba(255,255,255,0.5); }
+  .hc1 { background: rgba(232,64,42,0.15); }
+  .hc2 { background: rgba(240,122,40,0.15); }
+  .hc3 { background: rgba(245,197,24,0.12); }
+  .hc4 { background: rgba(76,175,80,0.12); }
+  .hc5 { background: rgba(43,123,204,0.15); }
+  .hc6 { background: rgba(139,79,184,0.15); }
+
+  /* PROGRAM */
+  .program-intro { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+  .program-date-badge {
+    background: var(--dark); color: white; border-radius: 14px; padding: 1rem 1.5rem;
+    font-size: 14px; line-height: 1.6;
+  }
+  .program-date-badge strong { font-size: 16px; display: block; }
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--rainbow); border-radius: 2px; }
+  .timeline-item {
+    position: relative; padding: 1.2rem 1.5rem 1.2rem 2rem; margin-bottom: 0.5rem;
+    border-radius: 14px; transition: background 0.2s;
+  }
+  .timeline-item:hover { background: rgba(0,0,0,0.03); }
+  .timeline-dot {
+    position: absolute; left: -1.9rem; top: 50%; transform: translateY(-50%);
+    width: 10px; height: 10px; border-radius: 50%; background: white;
+    border: 2px solid currentColor;
+  }
+  .timeline-time { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .timeline-act { font-weight: 600; font-size: 16px; color: var(--text); }
+  .timeline-type { font-size: 13px; color: var(--muted); }
+  .t-musik .timeline-time, .t-musik .timeline-dot { color: var(--red); }
+  .t-moderation .timeline-time, .t-moderation .timeline-dot { color: var(--orange); }
+  .t-eroeffnung .timeline-time, .t-eroeffnung .timeline-dot { color: var(--yellow); }
+  .t-gruss .timeline-time, .t-gruss .timeline-dot { color: var(--green); }
+  .t-vortrag .timeline-time, .t-vortrag .timeline-dot { color: var(--blue); }
+  .t-tanz .timeline-time, .t-tanz .timeline-dot { color: var(--purple); }
+  .program-legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* SPONSOR */
+  .sponsor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .sponsor-card {
+    background: white; border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.5rem; display: flex; align-items: center; justify-content: center;
+    min-height: 90px; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .sponsor-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+  .sponsor-card img { max-width: 100%; max-height: 60px; object-fit: contain; filter: grayscale(0.3); transition: filter 0.2s; }
+  .sponsor-card:hover img { filter: grayscale(0); }
+
+  /* ANMELDUNG */
+  .anmeldung-bg { background: linear-gradient(135deg, rgba(43,123,204,0.06), rgba(139,79,184,0.06)); }
+  .anmeldung-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  @media (max-width: 700px) { .anmeldung-grid { grid-template-columns: 1fr; } }
+  .anmeldung-card {
+    background: white; border: 1px solid var(--border); border-radius: 20px;
+    padding: 2.5rem; position: relative; overflow: hidden;
+  }
+  .anmeldung-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  }
+  .anmeldung-card.aussteller::before { background: linear-gradient(90deg, var(--blue), var(--purple)); }
+  .anmeldung-card.helfer::before { background: linear-gradient(90deg, var(--green), var(--blue)); }
+  .card-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .card-text { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+  .card-list { list-style: none; margin-bottom: 1.5rem; }
+  .card-list li { font-size: 14px; color: var(--muted); padding: 4px 0; padding-left: 1.2rem; position: relative; }
+  .card-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); }
+
+  /* CONTACT */
+  .contact-inner {
+    background: var(--dark); border-radius: 24px; padding: 4rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap;
+    position: relative; overflow: hidden;
+  }
+  .contact-inner::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(43,123,204,0.1), rgba(139,79,184,0.1));
+    pointer-events: none;
+  }
+  .contact-text { position: relative; z-index: 1; }
+  .contact-text .section-title { color: white; margin-bottom: 0.5rem; }
+  .contact-text p { color: rgba(255,255,255,0.6); font-size: 15px; }
+  .contact-links { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px; padding: 14px 20px; text-decoration: none; transition: all 0.2s;
+    color: white; font-size: 14px;
+  }
+  .contact-link:hover { background: rgba(255,255,255,0.15); transform: translateX(4px); }
+  .contact-link-icon { font-size: 16px; }
+
+  /* SCHIRMHERR */
+  .schirmherr-card {
+    background: white; border: 1px solid var(--border); border-radius: 20px;
+    padding: 2.5rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.06); margin-top: 3rem;
+  }
+  .schirmherr-logo { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #f0f0f0; display: flex; align-items: center; justify-content: center; }
+  .schirmherr-logo img { width: 100%; height: 100%; object-fit: cover; }
+  .schirmherr-text h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .schirmherr-text p { color: var(--muted); font-size: 14px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.5);
+    padding: 3rem 2rem; text-align: center; font-size: 13px;
+  }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  footer a:hover { color: white; }
+  .footer-rainbow { height: 3px; background: var(--rainbow); margin-bottom: 2rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; align-items: center; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: white; }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+  /* IMPRESSUM SECTION */
+  .impressum-text { font-size: 14px; color: var(--muted); line-height: 1.8; }
+  .impressum-text h3 { font-weight: 600; color: var(--text); margin: 1.5rem 0 0.5rem; font-size: 15px; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="nav-logo-badge">FD</div>
+      <span>Fest der Demokratie</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#ueber">Über uns</a>
+      <a href="#programm">Programm</a>
+      <a href="#anmeldung">Anmeldung</a>
+      <a href="#helfer">Helfer</a>
+      <a href="#sponsoren">Sponsoren</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Save the Date · 14. November 2026</div>
+    <h1 class="hero-title">
+      Fest der<br><span class="rainbow-text">Demokratie</span>
+    </h1>
+    <p class="hero-subtitle">Wir feiern unsere Demokratie – gemeinsam, bunt und laut.</p>
+    <div class="hero-meta">
+      <div class="hero-chip">
+        <div class="dot" style="background:var(--red)"></div>
+        14. November 2026
+      </div>
+      <div class="hero-chip">
+        <div class="dot" style="background:var(--blue)"></div>
+        13:00 – 18:30 Uhr
+      </div>
+      <div class="hero-chip">
+        <div class="dot" style="background:var(--green)"></div>
+        Rhein-Mosel-Halle, Koblenz
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#programm" class="btn-primary">Zum Programm</a>
+      <a href="#anmeldung" class="btn-outline">Jetzt anmelden</a>
+    </div>
+  </div>
+</section>
+
+<div class="rainbow-bar"></div>
+
+<!-- ÜBER UNS -->
+<section id="ueber">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label">Über das Fest</div>
+        <h2 class="section-title">Ein Zeichen für Vielfalt und Menschenwürde</h2>
+        <p class="section-intro">
+          Das Fest der Demokratie ist ein offenes Begegnungsfest für alle Menschen in Koblenz und der Region.
+          2025 feierten wir mit über 1.600 Besuchern und mehr als 70 Organisationen – und setzten gemeinsam ein starkes Zeichen für Demokratie, Vielfalt und Menschenwürde.
+        </p>
+        <p class="section-intro" style="margin-top:1rem;">
+          Am 14. November 2026 laden wir zum 3. Fest der Demokratie in die Rhein-Mosel-Halle ein.
+          Erlebe Musik, Tanz, Diskussionen, Ausstellungen, Infostände und herzliche Begegnungen.
+        </p>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="about-stat-num">1.600+</div>
+            <div class="about-stat-label">Besucher 2025</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">70+</div>
+            <div class="about-stat-label">Organisationen</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">3.</div>
+            <div class="about-stat-label">Ausgabe 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image-wrap">
+        <img src="https://demokratiefest-koblenz.de/images/2025/event_photo.jpg"
+             alt="Fest der Demokratie 2025"
+             onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'text-align:center;color:#888;font-size:14px;padding:2rem;\'>📸 Foto vom Fest 2025</div>'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights-bg">
+  <div class="container">
+    <div class="section-label" style="color:rgba(255,255,255,0.5); -webkit-text-fill-color:rgba(255,255,255,0.5)">Was euch erwartet</div>
+    <h2 class="section-title" style="color:white">Ein volles Programm für alle</h2>
+    <div class="highlights-grid">
+      <div class="highlight-card hc1">
+        <div class="highlight-icon">🎵</div>
+        <div class="highlight-title">Musik</div>
+        <div class="highlight-desc">Live-Auftritte von lokalen und internationalen Künstlern</div>
+      </div>
+      <div class="highlight-card hc2">
+        <div class="highlight-icon">💬</div>
+        <div class="highlight-title">Diskussionen</div>
+        <div class="highlight-desc">Gespräche über Demokratie, Gesellschaft und Zukunft</div>
+      </div>
+      <div class="highlight-card hc3">
+        <div class="highlight-icon">🤝</div>
+        <div class="highlight-title">Vernetzung</div>
+        <div class="highlight-desc">Begegnungen mit engagierten Organisationen aus der Region</div>
+      </div>
+      <div class="highlight-card hc4">
+        <div class="highlight-icon">🖼️</div>
+        <div class="highlight-title">Ausstellungen</div>
+        <div class="highlight-desc">Zum Nachdenken anregende Themen und Kunstwerke</div>
+      </div>
+      <div class="highlight-card hc5">
+        <div class="highlight-icon">ℹ️</div>
+        <div class="highlight-title">Infostände</div>
+        <div class="highlight-desc">Über 70 Organisationen informieren und laden ein</div>
+      </div>
+      <div class="highlight-card hc6">
+        <div class="highlight-icon">🍽️</div>
+        <div class="highlight-title">Essen & Trinken</div>
+        <div class="highlight-desc">Vielfältige kulinarische Angebote aus aller Welt</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rainbow-bar"></div>
+
+<!-- PROGRAMM -->
+<section id="programm">
+  <div class="container">
+    <div class="program-intro">
+      <div>
+        <div class="section-label">Bühnenprogramm</div>
+        <h2 class="section-title">Ablauf des Tages</h2>
+        <p class="section-intro">Ein vielfältiges Programm von 13:00 bis 18:30 Uhr.</p>
+      </div>
+      <div class="program-date-badge">
+        <strong>14. November 2026</strong>
+        Rhein-Mosel-Halle Koblenz<br>
+        13:00 – 18:30 Uhr
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item t-musik">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">13:00</div>
+        <div class="timeline-act">Tri3o</div>
+        <div class="timeline-type">Musik</div>
+      </div>
+      <div class="timeline-item t-moderation">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">13:30</div>
+        <div class="timeline-act">Zemfira Dlovani</div>
+        <div class="timeline-type">Moderation</div>
+      </div>
+      <div class="timeline-item t-eroeffnung">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">13:40</div>
+        <div class="timeline-act">Klaus Haars und das Orga-Team</div>
+        <div class="timeline-type">Eröffnung</div>
+      </div>
+      <div class="timeline-item t-gruss">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">13:45</div>
+        <div class="timeline-act">Oberbürgermeister und Schirmherr David Langner</div>
+        <div class="timeline-type">Grußwort</div>
+      </div>
+      <div class="timeline-item t-tanz">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">14:30</div>
+        <div class="timeline-act">Illios</div>
+        <div class="timeline-type">Griechischer Tanz & Musik</div>
+      </div>
+      <div class="timeline-item t-vortrag">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">15:00</div>
+        <div class="timeline-act">Kulturdezernent Ingo Schneider</div>
+        <div class="timeline-type">Vorstellung der Partnerschaft für Demokratie Koblenz</div>
+      </div>
+      <div class="timeline-item t-musik">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">15:30</div>
+        <div class="timeline-act">Ukrainischer Chor „Oranta"</div>
+        <div class="timeline-type">Musik</div>
+      </div>
+      <div class="timeline-item t-tanz">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">16:00</div>
+        <div class="timeline-act">Tanzfabrik Mittelrhein</div>
+        <div class="timeline-type">Tanz & Musik</div>
+      </div>
+      <div class="timeline-item t-musik">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">16:30</div>
+        <div class="timeline-act">Sara und Leen Shaban</div>
+        <div class="timeline-type">Musik</div>
+      </div>
+      <div class="timeline-item t-vortrag">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">17:00</div>
+        <div class="timeline-act">Justizminister Philipp Fernis</div>
+        <div class="timeline-type">Demokratie und Rechtsstaatlichkeit</div>
+      </div>
+      <div class="timeline-item t-tanz">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">17:15</div>
+        <div class="timeline-act">Tanzfabrik Mittelrhein</div>
+        <div class="timeline-type">Tanz & Musik</div>
+      </div>
+      <div class="timeline-item t-musik">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">17:45</div>
+        <div class="timeline-act">Klezfluentes</div>
+        <div class="timeline-type">Musik</div>
+      </div>
+      <div class="timeline-item t-musik">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">18:15</div>
+        <div class="timeline-act">Birds Out</div>
+        <div class="timeline-type">Musik</div>
+      </div>
+    </div>
+
+    <div class="program-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Musik</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> Moderation</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div> Eröffnung</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Grußwort</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div> Vortrag</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div> Tanz</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHIRMHERR -->
+<section style="padding-top:0; padding-bottom: 2rem;">
+  <div class="container">
+    <div class="schirmherr-card">
+      <div class="schirmherr-logo">
+        <img src="https://demokratiefest-koblenz.de/images/logo-fdd.jpeg"
+             alt="Logo FDD"
+             onerror="this.style.display='none'">
+      </div>
+      <div class="schirmherr-text">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Schirmherr</p>
+        <h3>Oberbürgermeister David Langner</h3>
+        <p>Stadt Koblenz – Schirmherr des Festes der Demokratie 2026</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rainbow-bar"></div>
+
+<!-- ANMELDUNG -->
+<section id="anmeldung" class="anmeldung-bg">
+  <div class="container">
+    <div class="section-label">Mitmachen</div>
+    <h2 class="section-title">Jetzt anmelden</h2>
+    <p class="section-intro">Die Anmeldung für Organisationen ist ab dem 1. Juni 2026 möglich. Sei dabei und setze ein Zeichen für die Demokratie!</p>
+    <div class="anmeldung-grid">
+      <div class="anmeldung-card aussteller">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Als Organisation / Aussteller</div>
+        <p class="card-text">Präsentiere deine Organisation mit einem eigenen Infostand, einer Ausstellung oder einem Programmbeitrag. Die Anmeldung öffnet ab 1. Juni 2026.</p>
+        <ul class="card-list">
+          <li>Eigener Infostand in der Rhein-Mosel-Halle</li>
+          <li>Vernetzung mit über 70 Organisationen</li>
+          <li>Direkte Begegnung mit 1.600+ Besuchern</li>
+          <li>Teil eines starken demokratischen Zeichens</li>
+        </ul>
+        <a href="mailto:info@demokratiefest-koblenz.de" class="btn-primary" style="display:inline-block;">Anfrage per E-Mail</a>
+      </div>
+      <div class="anmeldung-card helfer" id="helfer">
+        <div class="card-icon">🙋</div>
+        <div class="card-title">Als freiwillige Helferin / freiwilliger Helfer</div>
+        <p class="card-text">Wir suchen engagierte Menschen, die uns bei der Werbung für das Fest sowie bei der Durchführung unterstützen. Jede helfende Hand zählt!</p>
+        <ul class="card-list">
+          <li>Aufbau und Abbau helfen</li>
+          <li>Information und Orientierung für Besucher</li>
+          <li>Technik, Bühne und Logistik</li>
+          <li>Werbung und Kommunikation im Vorfeld</li>
+        </ul>
+        <a href="mailto:info@demokratiefest-koblenz.de?subject=Helfer-Anmeldung%20Fest%20der%20Demokratie%202026" class="btn-primary" style="display:inline-block; background: linear-gradient(90deg, var(--green), var(--blue));">Als Helfer anmelden</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSOREN -->
+<section id="sponsoren">
+  <div class="container">
+    <div class="section-label">Unsere Partner</div>
+    <h2 class="section-title">Sponsoren & Förderer</h2>
+    <p class="section-intro">Wir danken unseren Sponsoren und Förderern herzlich – ohne ihre Unterstützung wäre das Fest nicht möglich.</p>
+    <div class="sponsor-grid">
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/Sparkasse-Koblenz_rot_2022.jpg" alt="Sparkasse Koblenz">
+      </div>
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/debeka-logo.png" alt="Debeka">
+      </div>
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/Logo LpB neu Kopie.jpg" alt="Landeszentrale für politische Bildung">
+      </div>
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/BMFSFJ_DL_mitFoerderzusatz Kopie.png" alt="BMFSFJ">
+      </div>
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/600x400_lotto-rlp.png" alt="Lotto Rheinland-Pfalz">
+      </div>
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/Ko-Rh-Mo-gelb.png" alt="Koblenz Rhein Mosel">
+      </div>
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/pfiffikus-koblenz.png" alt="Pfiffikus Koblenz">
+      </div>
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/partnerschaft-fur-demokratie.jpeg" alt="Partnerschaft für Demokratie">
+      </div>
+      <div class="sponsor-card">
+        <img src="https://demokratiefest-koblenz.de/images/logos/wozu-demokratie.png" alt="Wozu Demokratie">
+      </div>
+    </div>
+    <p style="margin-top:2rem; font-size:14px; color:var(--muted);">
+      Interesse an einer Partnerschaft? Schreib uns: <a href="mailto:info@demokratiefest-koblenz.de" style="color:var(--blue);">info@demokratiefest-koblenz.de</a>
+    </p>
+  </div>
+</section>
+
+<div class="rainbow-bar"></div>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <div class="section-label" style="color:rgba(255,255,255,0.5); -webkit-text-fill-color: rgba(255,255,255,0.5)">Fragen?</div>
+        <h2 class="section-title">Kontakt & Infos</h2>
+        <p>Für Fragen zur Anmeldung, zum Programm oder zur Partnerschaft – schreib uns gerne.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:info@demokratiefest-koblenz.de" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          info@demokratiefest-koblenz.de
+        </a>
+        <a href="https://demokratiefest-koblenz.de" class="contact-link" target="_blank">
+          <span class="contact-link-icon">🌐</span>
+          demokratiefest-koblenz.de
+        </a>
+        <a href="https://maps.google.com/?q=Rhein-Mosel-Halle+Koblenz" class="contact-link" target="_blank">
+          <span class="contact-link-icon">📍</span>
+          Rhein-Mosel-Halle, Koblenz
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-rainbow"></div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">Fest der Demokratie · Koblenz</div>
+      <div class="footer-links">
+        <a href="#ueber">Über uns</a>
+        <a href="#programm">Programm</a>
+        <a href="#anmeldung">Anmeldung</a>
+        <a href="#sponsoren">Sponsoren</a>
+        <a href="mailto:info@demokratiefest-koblenz.de">Kontakt</a>
+      </div>
+    </div>
+    <p>© 2026 Fest der Demokratie Koblenz · <a href="mailto:info@demokratiefest-koblenz.de">info@demokratiefest-koblenz.de</a> · Schirmherr: OB David Langner</p>
+  </div>
+</footer>
+
+</body>
+</html>
