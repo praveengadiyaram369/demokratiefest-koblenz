@@ -10,9 +10,9 @@
 <style>
 :root{
   --ink:#111827;--ink2:#374151;--muted:#6b7280;
-  --pale:#f7faf9;--white:#ffffff;--border:rgba(0,0,0,0.08);
-  --ac:#0d9488;--ac-dk:#0f766e;--ac-lt:#f0fdfa;--ac-mid:#14b8a6;
-  --stripe:linear-gradient(90deg,#dc2626 0%,#ea7820 18%,#eab308 36%,#0d9488 52%,#2563eb 68%,#7c3aed 84%,#db2777 100%);
+  --pale:#f9f8ff;--white:#ffffff;--border:rgba(0,0,0,0.08);
+  --ac:#7c3aed;--ac-dk:#6d28d9;--ac-lt:#f5f3ff;--ac-mid:#8b5cf6;
+  --stripe:linear-gradient(90deg,#dc2626 0%,#ea7820 18%,#eab308 36%,#16a34a 52%,#2563eb 68%,#7c3aed 84%,#db2777 100%);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -22,22 +22,19 @@ a:hover{text-decoration:underline;}
 img{max-width:100%;display:block;}
 .container{max-width:860px;margin:0 auto;padding:0 1.5rem;}
 .stripe-bar{height:5px;background:var(--stripe);}
-
 nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);box-shadow:0 1px 24px rgba(0,0,0,.07);}
 .nav-inner{max-width:1120px;margin:0 auto;padding:0 1.5rem;height:68px;display:flex;align-items:center;justify-content:space-between;}
 .nav-brand{display:flex;align-items:center;gap:10px;}
 .nav-brand img{height:36px;width:auto;}
 .nav-brand-text{font-family:'Playfair Display',serif;font-size:.93rem;font-weight:700;line-height:1.2;color:var(--ink);}
 .nav-brand-text span{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:400;color:var(--muted);display:block;}
-.nav-back{font-size:14px;font-weight:500;color:var(--ac);padding:7px 16px;border-radius:22px;border:1px solid rgba(13,148,136,.25);transition:.18s;}
+.nav-back{font-size:14px;font-weight:500;color:var(--ac);padding:7px 16px;border-radius:22px;border:1px solid rgba(124,58,237,.25);transition:.18s;}
 .nav-back:hover{background:var(--ac-lt);text-decoration:none;}
-
 .page-hero{padding:7rem 1.5rem 3.5rem;background:var(--pale);border-bottom:1px solid var(--border);}
 .eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:.6rem;}
 .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.1;color:var(--ink);}
 .page-hero h1 em{font-style:italic;color:var(--ac);}
 .page-hero p{font-size:1rem;color:var(--muted);margin-top:.75rem;max-width:560px;line-height:1.75;}
-
 .legal-content{padding:3.5rem 0 5rem;}
 .legal-section{margin-bottom:3rem;}
 .legal-section h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem;}
@@ -46,10 +43,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,
 .legal-section ul{list-style:none;margin:.25rem 0 .75rem;}
 .legal-section ul li{font-size:.975rem;color:var(--ink2);padding:4px 0 4px 1.2rem;position:relative;line-height:1.7;}
 .legal-section ul li::before{content:'—';position:absolute;left:0;color:var(--muted);font-size:.85rem;}
-.info-card{background:var(--ac-lt);border:1px solid rgba(13,148,136,.18);border-left:4px solid var(--ac);border-radius:14px;padding:1.25rem 1.5rem;margin:.75rem 0;}
+.info-card{background:var(--ac-lt);border:1px solid rgba(124,58,237,.15);border-left:4px solid var(--ac);border-radius:0 14px 14px 0;padding:1.25rem 1.5rem;margin:.75rem 0;}
 .info-card p{color:var(--ink2);font-size:.95rem;margin:0;}
 .info-card strong{color:var(--ink);display:block;font-size:.85rem;font-weight:600;letter-spacing:.04em;margin-bottom:2px;}
-
 footer{background:#111827;}
 .footer-stripe{height:3px;background:var(--stripe);}
 .footer-simple{max-width:1120px;margin:0 auto;padding:1.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;}
@@ -68,9 +64,7 @@ footer{background:#111827;}
     <a href="index.html" class="nav-back">← Zurück zur Startseite</a>
   </div>
 </nav>
-
 <div class="stripe-bar" style="margin-top:68px;"></div>
-
 <div class="page-hero">
   <div class="container">
     <div class="eyebrow">Rechtliches</div>
@@ -78,7 +72,6 @@ footer{background:#111827;}
     <p>Angaben gemäß § 5 TMG (Telemediengesetz) und § 55 RStV (Rundfunkstaatsvertrag).</p>
   </div>
 </div>
-
 <div class="legal-content">
   <div class="container">
 
@@ -117,7 +110,7 @@ footer{background:#111827;}
         <li><strong>Facebook</strong> – zur Verlinkung auf unsere Veranstaltungsseite</li>
         <li><strong>Google Fonts</strong> – zur Darstellung der Website-Schriften (Playfair Display, Inter)</li>
       </ul>
-      <p>Bei Nutzung dieser Dienste können Daten an die jeweiligen Anbieter übertragen werden. Details dazu finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <p>Bei Nutzung dieser Dienste können Daten an die jeweiligen Anbieter übertragen werden. Details in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
     </div>
 
     <div class="legal-section">
@@ -145,7 +138,6 @@ footer{background:#111827;}
 
   </div>
 </div>
-
 <footer>
   <div class="footer-stripe"></div>
   <div class="footer-simple">
