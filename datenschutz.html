@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutz – Fest der Demokratie Koblenz</title>
+<link rel="icon" href="images/logo-colors.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111827;--ink2:#374151;--muted:#6b7280;
+  --pale:#f7faf9;--white:#ffffff;--border:rgba(0,0,0,0.08);
+  --ac:#0d9488;--ac-dk:#0f766e;--ac-lt:#f0fdfa;--ac-mid:#14b8a6;
+  --green:#15803d;--green-lt:#f0fdf4;
+  --stripe:linear-gradient(90deg,#dc2626 0%,#ea7820 18%,#eab308 36%,#0d9488 52%,#2563eb 68%,#7c3aed 84%,#db2777 100%);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--ink);line-height:1.65;}
+a{color:var(--ac);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{max-width:100%;display:block;}
+.container{max-width:860px;margin:0 auto;padding:0 1.5rem;}
+.stripe-bar{height:5px;background:var(--stripe);}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:500;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);box-shadow:0 1px 24px rgba(0,0,0,.07);}
+.nav-inner{max-width:1120px;margin:0 auto;padding:0 1.5rem;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.nav-brand{display:flex;align-items:center;gap:10px;}
+.nav-brand img{height:36px;width:auto;}
+.nav-brand-text{font-family:'Playfair Display',serif;font-size:.93rem;font-weight:700;line-height:1.2;color:var(--ink);}
+.nav-brand-text span{font-family:'Inter',sans-serif;font-size:.68rem;font-weight:400;color:var(--muted);display:block;}
+.nav-back{font-size:14px;font-weight:500;color:var(--ac);padding:7px 16px;border-radius:22px;border:1px solid rgba(13,148,136,.25);transition:.18s;}
+.nav-back:hover{background:var(--ac-lt);text-decoration:none;}
+
+.page-hero{padding:7rem 1.5rem 3.5rem;background:var(--pale);border-bottom:1px solid var(--border);}
+.eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ac);margin-bottom:.6rem;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.1;color:var(--ink);}
+.page-hero h1 em{font-style:italic;color:var(--ac);}
+.page-hero p{font-size:1rem;color:var(--muted);margin-top:.75rem;max-width:580px;line-height:1.75;}
+
+/* Privacy highlight */
+.privacy-hi{background:var(--green-lt);border:1px solid rgba(21,128,61,.2);border-left:4px solid var(--green);border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;margin-bottom:2.5rem;}
+.privacy-hi p{font-size:.95rem;color:#166534;line-height:1.75;margin:0;}
+.privacy-hi strong{color:#14532d;}
+
+/* ToC */
+.toc{background:var(--pale);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:2.5rem;}
+.toc h3{font-size:.85rem;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.85rem;}
+.toc ol{list-style:decimal;padding-left:1.25rem;}
+.toc ol li{font-size:.9rem;color:var(--ink2);padding:3px 0;}
+.toc ol li a{color:var(--ac);}
+
+.legal-content{padding:3.5rem 0 5rem;}
+.legal-section{margin-bottom:3rem;}
+.legal-section h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem;}
+.legal-section h3{font-size:1rem;font-weight:600;color:var(--ink);margin:.9rem 0 .4rem;}
+.legal-section p{font-size:.975rem;color:var(--ink2);line-height:1.82;margin-bottom:.7rem;}
+.legal-section p strong{color:var(--ink);font-weight:600;}
+.legal-section ul{list-style:none;margin:.25rem 0 .75rem;}
+.legal-section ul li{font-size:.975rem;color:var(--ink2);padding:4px 0 4px 1.2rem;position:relative;line-height:1.7;}
+.legal-section ul li::before{content:'—';position:absolute;left:0;color:var(--muted);font-size:.85rem;}
+.info-card{background:var(--ac-lt);border:1px solid rgba(13,148,136,.18);border-left:4px solid var(--ac);border-radius:14px;padding:1.25rem 1.5rem;margin:.75rem 0;}
+.info-card p{color:var(--ink2);font-size:.95rem;margin:0;}
+.info-card strong{color:var(--ink);display:block;font-size:.85rem;font-weight:600;letter-spacing:.04em;margin-bottom:2px;}
+
+footer{background:#111827;}
+.footer-stripe{height:3px;background:var(--stripe);}
+.footer-simple{max-width:1120px;margin:0 auto;padding:1.5rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.75rem;}
+.footer-simple span{font-size:12px;color:rgba(255,255,255,.3);}
+.footer-simple a{font-size:12px;color:rgba(255,255,255,.4);}
+.footer-simple a:hover{color:#fff;text-decoration:none;}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+      <div class="nav-brand-text">Fest der Demokratie<span>Koblenz · 14. November 2026</span></div>
+    </a>
+    <a href="index.html" class="nav-back">← Zurück zur Startseite</a>
+  </div>
+</nav>
+
+<div class="stripe-bar" style="margin-top:68px;"></div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Rechtliches</div>
+    <h1>Daten<em>schutz</em></h1>
+    <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Hier erfahren Sie, welche Daten wir erheben, wie wir sie verwenden und welche Rechte Sie haben.</p>
+  </div>
+</div>
+
+<div class="legal-content">
+  <div class="container">
+
+    <div class="privacy-hi">
+      <span style="font-size:1.5rem;flex-shrink:0;margin-top:2px;">🔒</span>
+      <p><strong>Kurzfassung:</strong> Diese Website verwendet keine Tracking-Cookies und kein Google Analytics. Wir sammeln nur Daten, die Sie uns freiwillig über Formulare mitteilen. Der Server steht in Deutschland.</p>
+    </div>
+
+    <div class="toc">
+      <h3>Inhalt</h3>
+      <ol>
+        <li><a href="#s1">Verantwortliche Person</a></li>
+        <li><a href="#s2">Welche Daten wir erheben</a></li>
+        <li><a href="#s3">Zweck der Datenverarbeitung</a></li>
+        <li><a href="#s4">Cookies &amp; Browserspeicherung</a></li>
+        <li><a href="#s5">Drittanbieter-Dienste</a></li>
+        <li><a href="#s6">Hosting &amp; Server-Logs</a></li>
+        <li><a href="#s7">Ihre Rechte</a></li>
+        <li><a href="#s8">Datensicherheit</a></li>
+        <li><a href="#s9">Kontakt</a></li>
+      </ol>
+    </div>
+
+    <div class="legal-section" id="s1">
+      <h2><span>👤</span> 1. Verantwortliche Person</h2>
+      <div class="info-card">
+        <strong>Datenschutzverantwortlicher</strong>
+        <p>Sri Sai Praveen Gadiyaram<br>
+        E-Mail: <a href="mailto:info@demokratiefest-koblenz.de">info@demokratiefest-koblenz.de</a><br>
+        Telefon: +49 151 25605486</p>
+      </div>
+      <p>Diese Website wird ehrenamtlich betrieben. Verantwortlich im Sinne der DSGVO ist die oben genannte Person.</p>
+    </div>
+
+    <div class="legal-section" id="s2">
+      <h2><span>📋</span> 2. Welche Daten wir erheben</h2>
+      <p>Wir erheben personenbezogene Daten nur, wenn Sie uns diese freiwillig über unsere Formulare mitteilen:</p>
+      <h3>Kontaktformular</h3>
+      <ul><li>Name</li><li>E-Mail-Adresse</li><li>Telefonnummer (optional)</li><li>Nachrichteninhalt</li></ul>
+      <h3>Anmeldeformular für Organisationen</h3>
+      <ul><li>Name der Organisation</li><li>Kontaktperson (Name, E-Mail, Telefon)</li><li>Website und Social-Media-Links (optional)</li><li>Tätig seit, Anzahl der Mitglieder</li><li>Tätigkeitsbereiche und Beschreibung</li></ul>
+      <h3>Helfer-Anmeldeformular</h3>
+      <ul><li>Name</li><li>E-Mail-Adresse</li><li>Telefonnummer</li><li>Alter</li><li>Zusätzliche Mitteilungen (optional)</li></ul>
+    </div>
+
+    <div class="legal-section" id="s3">
+      <h2><span>🎯</span> 3. Zweck der Datenverarbeitung</h2>
+      <p>Alle erhobenen Daten werden ausschließlich verwendet für:</p>
+      <ul>
+        <li>Die Organisation und Durchführung des Festes der Demokratie</li>
+        <li>Die Beantwortung von Anfragen und Kontaktaufnahme</li>
+        <li>Die Koordination von Ausstellern, Organisationen und Helfern</li>
+      </ul>
+      <p><strong>Datenspeicherung:</strong> Alle gesammelten Daten werden vorläufig gespeichert und spätestens <strong>ein Jahr nach dem Fest gelöscht</strong>.</p>
+      <p><strong>Keine Datenweitergabe:</strong> Wir geben Ihre Daten nicht an Dritte weiter, außer es ist zur Durchführung des Festes zwingend erforderlich.</p>
+      <p><strong>Nicht veröffentlicht</strong> werden: Kontaktperson (Name, E-Mail, Telefon), genaue Mitgliederzahl, interne Tätigkeitsfelder.</p>
+    </div>
+
+    <div class="legal-section" id="s4">
+      <h2><span>🍪</span> 4. Cookies &amp; Browserspeicherung</h2>
+      <p>Diese Website verwendet <strong>keine Tracking-Cookies</strong> und kein Analytics (wie Google Analytics oder ähnliches).</p>
+      <p>Wir nutzen <strong>localStorage</strong> Ihres Browsers ausschließlich, um Ihren Zustimmungsstatus zum Datenschutz-Hinweis zu speichern. Diese Information verlässt Ihren Browser nicht.</p>
+    </div>
+
+    <div class="legal-section" id="s5">
+      <h2><span>🔗</span> 5. Drittanbieter-Dienste</h2>
+      <h3>Google Maps</h3>
+      <p>Zur Anzeige des Veranstaltungsorts binden wir Google Maps ein. Beim Laden der Karte werden Daten an Google LLC, USA, übertragen. Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+      <h3>Google Fonts</h3>
+      <p>Diese Website lädt Schriften über Google Fonts. Dabei kann die IP-Adresse Ihres Browsers an Google übermittelt werden. Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
+      <h3>Facebook</h3>
+      <p>Diese Website enthält Links zu unserer Facebook-Seite. Beim Klick gelten die Datenschutzbestimmungen von Meta Platforms Ireland Ltd. Wir binden keine Facebook-Tracker oder Plugins ein.</p>
+    </div>
+
+    <div class="legal-section" id="s6">
+      <h2><span>🖥️</span> 6. Hosting &amp; Server-Logs</h2>
+      <p>Unsere Website wird in Deutschland gehostet (WIIT AG, Limburgerhof). Bei jedem Seitenaufruf speichert der Server automatisch technische Informationen:</p>
+      <ul>
+        <li>IP-Adresse des anfragenden Geräts (anonymisiert)</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Abgerufene Seite / Dateiname</li>
+        <li>Browsertyp und Betriebssystem</li>
+        <li>HTTP-Statuscode</li>
+      </ul>
+      <p>Diese Daten werden ausschließlich zu technischen Zwecken gespeichert und nach spätestens 30 Tagen automatisch gelöscht. Eine Zuordnung zu einzelnen Personen findet nicht statt.</p>
+    </div>
+
+    <div class="legal-section" id="s7">
+      <h2><span>⚖️</span> 7. Ihre Rechte</h2>
+      <p>Gemäß DSGVO haben Sie das Recht auf:</p>
+      <ul>
+        <li><strong>Auskunft</strong> — welche Daten von Ihnen gespeichert sind</li>
+        <li><strong>Berichtigung</strong> — unrichtiger oder unvollständiger Daten</li>
+        <li><strong>Löschung</strong> — Ihrer gespeicherten Daten</li>
+        <li><strong>Einschränkung</strong> der Verarbeitung</li>
+        <li><strong>Widerspruch</strong> gegen die Verarbeitung</li>
+        <li><strong>Datenübertragbarkeit</strong></li>
+        <li><strong>Beschwerde</strong> bei einer Datenschutz-Aufsichtsbehörde</li>
+      </ul>
+      <p>Zur Ausübung Ihrer Rechte: <a href="mailto:info@demokratiefest-koblenz.de">info@demokratiefest-koblenz.de</a></p>
+      <p>Zuständige Aufsichtsbehörde: <a href="https://www.datenschutz.rlp.de" target="_blank" rel="noopener">Landesbeauftragte für den Datenschutz und die Informationsfreiheit Rheinland-Pfalz</a></p>
+    </div>
+
+    <div class="legal-section" id="s8">
+      <h2><span>🛡️</span> 8. Datensicherheit</h2>
+      <p>Wir setzen technische und organisatorische Maßnahmen ein, um Ihre Daten gegen unbefugten Zugriff zu schützen. Die Datenübertragung erfolgt verschlüsselt über HTTPS.</p>
+    </div>
+
+    <div class="legal-section" id="s9">
+      <h2><span>✉️</span> 9. Kontakt bei Datenschutzfragen</h2>
+      <div class="info-card">
+        <strong>Datenschutzkontakt</strong>
+        <p>E-Mail: <a href="mailto:info@demokratiefest-koblenz.de">info@demokratiefest-koblenz.de</a><br>
+        Verantwortlich: Sri Sai Praveen Gadiyaram</p>
+      </div>
+      <p style="margin-top:.5rem;font-size:.9rem;color:var(--muted);">Stand: April 2026. Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf zu aktualisieren.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-stripe"></div>
+  <div class="footer-simple">
+    <span>© 2026 Fest der Demokratie Koblenz · Schirmherr: OB David Langner</span>
+    <span><a href="index.html">Startseite</a> &nbsp;·&nbsp; <a href="impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp; <a href="mailto:info@demokratiefest-koblenz.de">Kontakt</a></span>
+  </div>
+</footer>
+</body>
+</html>
